@@ -1,0 +1,5 @@
+to run & generate allure report :
+behave -f allure_behave.formatter:AllureFormatter -o reports/features
+
+to generate allure report in html/server:
+allure serve reports/

@@ -1,5 +1,6 @@
 import time
-
+import allure
+from allure_commons.types import AttachmentType
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -22,7 +23,7 @@ def Enter_Credentials(context,username,password):
 def Login_btn(context):
     context.driver.find_element("xpath", "//*[@value='Login']").click()
     #context.driver.find_element_by_xpath("//*[@value='Login']").click()
-
+    context.driver.save_screenshot(".\\Screenshots\\" + "Login.png")
 
 @then(u'the user is logged in')
 def LoggedIn(context):
@@ -34,6 +35,9 @@ def LoggedIn(context):
         context.driver.close()
         assert False, "Test Failed"
     if text=="Welcome!":
+        context.driver.save_screenshot(".\\Screenshots\\"+"Login.png")
+        allure.attach(context.driver.get_screenshot_as_png(),name="login test",attachment_type=AttachmentType.PNG)
+
         context.driver.close()
         assert True, "Test Passed"
 

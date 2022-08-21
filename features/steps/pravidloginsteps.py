@@ -4,6 +4,7 @@ from allure_commons.types import AttachmentType
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from Pages.LoginPage import Login
 
 @given(u'user is on the login page of pravid')
 def On_Login(context):
@@ -13,6 +14,10 @@ def On_Login(context):
 
 @when(u'user enters valid username "{username}" and valid password "{password}"')
 def Enter_Credentials(context,username,password):
+
+    # context.LoginPg = Login(context.driver)
+    # context.LoginPg.Set_User(context.username)
+    # context.LoginPg.Set_pass(context.password)
     context.driver.find_element("xpath", "//*[@type='email']").send_keys(username)
     context.driver.find_element("xpath", "//*[@type='password']").send_keys(password)
     #context.driver.find_element_by_xpath("//*[@type='email']").send_keys(username)

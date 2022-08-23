@@ -4,13 +4,13 @@ from allure_commons.types import AttachmentType
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from Pages.LoginPage import Login
+#from Pages.LoginPage import Login
 
 @given(u'user is on the login page of pravid')
 def On_Login(context):
     Service()
     context.driver = webdriver.Chrome()
-    context.driver.get("https://pravid.io/login")
+    context.driver.get("https://pravid.saarthi.ai/login")
 
 @when(u'user enters valid username "{username}" and valid password "{password}"')
 def Enter_Credentials(context,username,password):
@@ -28,7 +28,7 @@ def Enter_Credentials(context,username,password):
 def Login_btn(context):
     context.driver.find_element("xpath", "//*[@value='Login']").click()
     #context.driver.find_element_by_xpath("//*[@value='Login']").click()
-    context.driver.save_screenshot(".\\Screenshots\\" + "Login.png")
+    #context.driver.save_screenshot(".\\Screenshots\\" + "Login.png")
 
 @then(u'the user is logged in')
 def LoggedIn(context):
@@ -42,7 +42,6 @@ def LoggedIn(context):
     if text=="Welcome!":
         context.driver.save_screenshot(".\\Screenshots\\"+"Login.png")
         allure.attach(context.driver.get_screenshot_as_png(),name="login test",attachment_type=AttachmentType.PNG)
-
         context.driver.close()
         assert True, "Test Passed"
 

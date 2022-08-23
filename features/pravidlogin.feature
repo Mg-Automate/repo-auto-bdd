@@ -1,7 +1,7 @@
 Feature: Login pravid
     Scenario: Log in to pravid
       Given user is on the login page of pravid
-      When user enters valid username "adminUser@InternalTesting.com" and valid password "InternalTesting@123"
+      When user enters valid username "adminUser@InternalTesting.com" and valid password "InternalTesting@1234"
       And click on login button
       Then the user is logged in
 
